@@ -19,3 +19,11 @@ array_push($alphArr, $arrLength . '個');
 
 // 配列に|を加えて文字列に変換
 echo implode(' | ', $alphArr);
+
+// echo '<pre>';
+// print_r($GLOBALS);
+// echo '</pre>';
+
+echo '<pre>';
+print_r($_SERVER);
+echo '</pre>';
