@@ -5,6 +5,22 @@ class Member
     public $age;
     public $address;
 
+    public function __construct()
+    {
+        echo '<p>インスタンスが生成されました</p>';
+    }
+
+    public function __destruct()
+    {
+        echo '<p>' . $this->name . 'が破棄されます</p>';
+    }
+
+    public function __call($name, $args)
+    {
+        echo $name . '関数、または' . implode(' | ', $args) .
+            'となる引数は存在しません。';
+    }
+
     public function showInfo()
     {
         echo '<ul>';
@@ -19,6 +35,7 @@ $m1 = new Member();
 $m1->name    = '山田太郎';
 $m1->age     = 21;
 $m1->address = '東京都';
+$m1->adress('test', 10, 'あ', 50);
 
 $m2 = new Member();
 $m2->name    = '鈴木次郎';
