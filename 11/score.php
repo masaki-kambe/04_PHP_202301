@@ -4,7 +4,13 @@ if (!empty($_POST)) {
     $score = $_POST['score'];
 }
 
-function getScoreResult($score)
+/**
+ * スコアを引数に指定すると判定結果を返す
+ *
+ * @param integer|null $score
+ * @return string
+ */
+function getScoreResult(?int $score): string
 {
     if (!is_numeric($score)) {
         return '数値を入力してください';
@@ -20,6 +26,19 @@ function getScoreResult($score)
         return '不合格です';
     }
 }
+
+/**
+ * 文字列を受けて文字参照で返す
+ *
+ * @param string|null $string
+ * @return string
+ */
+function h(?string $string): ?string
+{
+    if (empty($string)) return null;
+    return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -35,7 +54,7 @@ function getScoreResult($score)
     <h1>テスト結果判定</h1>
     <form action="" method="post" novalidate>
         <p>点数：
-            <input type="text" name="score" size="3" maxlength="3" value="<?= htmlspecialchars($score, ENT_QUOTES | ENT_HTML5, 'UTF-8') ?>">点
+            <input type="text" name="score" size="3" maxlength="3" value="<?=h($score)?>">点
             <input type="submit" value="判定">
         </p>
     </form>
