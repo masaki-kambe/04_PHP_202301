@@ -14,3 +14,10 @@ if ($days == 0) {
 } else {
     echo $d2->format('Y年m月d日') . '(' . $weekday[$d2->format('w')] . ')の方が「' . $days . '日分」' . $d1->format('Y年m月d日') . '(' . $weekday[$d1->format('w')] . ')より新しいです';
 }
+
+
+if ($kana === '' || preg_match('/^(\s|　)+$/u', $kana)) {
+    $kanaError = 'フリガナを入力して下さい';
+    $isValidated = false;
+}
+
